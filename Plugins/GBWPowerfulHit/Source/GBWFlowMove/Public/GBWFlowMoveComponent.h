@@ -126,6 +126,7 @@ public:
 	UFUNCTION(Reliable, NetMulticast, Category = "GBW|FlowMove|Action")
 	void SetActive_Multicast(bool NewActive);
 
+	//设置运动的约束（将运动限制在平面）
 	UFUNCTION(Category = "GBW|FlowMove|Movement")
 	void SetMovementConstrain(const FVector& PlaneNormal, const FVector& PlaneOrigin);
 	UFUNCTION(Reliable, Server, Category = "GBW|FlowMove|Movement")
@@ -133,6 +134,7 @@ public:
 	UFUNCTION(Reliable, NetMulticast, Category = "GBW|FlowMove|Movement")
 	void SetMovementConstrain_Multicast(FVector PlaneNormal, FVector PlaneOrigin);
 
+	//重新设置运动的约束
 	UFUNCTION(Category = "GBW|FlowMove|Movement")
 	void ResetMovementConstrain();
 	UFUNCTION(Reliable, Server, Category = "GBW|FlowMove|Movement")
@@ -149,8 +151,9 @@ public:
 // END FlowMove Control
 
 // BEGIN FlowMove State
+	
 	void NetInit();
-
+	//Resource Management System = RMS 资源管理系统
 	UFUNCTION(BlueprintCallable, Category = "GBW|FlowMove|State")
 	void SetRMSParamNow(FTransform NewRMSParam);
 	UFUNCTION(Reliable,Server,Category = "GBW|FlowMove|State")
@@ -176,7 +179,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "GBW|FlowMove|State")
 	void TryLockActor(FGameplayTag GetTargetFunctionTag);
-	
+
+	//该函数的作用是检查新场景是否符合目标场景，如果是，则将变化信息存储到ChangeInfo中。函数的返回类型是bool，可能用于指示是否发生了场景变化
 	bool CheckSceneChange(
 		const FGBWFlowMoveScene& NewScene,
 		FGameplayTag TargetScene,

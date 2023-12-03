@@ -433,7 +433,7 @@ void UGBWFlowMoveComponent::SetActive_Multicast_Implementation(bool NewActive)
 {
 	TaskState.bIsActive = NewActive;
 }
-
+//是否收到了平面的约束 （这里看的是movement这个组件里面的内容）
 void UGBWFlowMoveComponent::SetMovementConstrain(const FVector& PlaneNormal, const FVector& PlaneOrigin)
 {
 	if (IsInServer() || IsLocalOwn())
@@ -2370,7 +2370,7 @@ void UGBWFlowMoveComponent::OnActiveEvent()
 	OnActive.Broadcast(TaskState);
 	OnEvent(FFlowMoveEvent(EFlowMoveEventType::OnActive));
 }
-
+//这个Tick函数调用了许多运行时的东西
 void UGBWFlowMoveComponent::FlowMoveTick(float DeltaTime)
 {
 	//Clear FlowMoveEvent
