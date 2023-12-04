@@ -13,7 +13,7 @@ void UGBWFlowMoveANS_MoveControl::NotifyBegin(USkeletalMeshComponent* MeshComp, 
 	AnimTotalDuration = TotalDuration;
 	AnimDuration = 0.0f;
 }
-
+//这个地方的Tick需要留意一下
 void UGBWFlowMoveANS_MoveControl::NotifyTick(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation,
                                              float FrameDeltaTime, const FAnimNotifyEventReference& EventReference)
 {

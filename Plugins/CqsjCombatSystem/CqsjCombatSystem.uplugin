@@ -1,0 +1,28 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "CqsjCombatSystem",
+	"Description": "学习",
+	"Category": "Other",
+	"CreatedBy": "cqsj",
+	"CreatedByURL": "https://space.bilibili.com/367389485",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CqsjCombatSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "CqsjFlowMove",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

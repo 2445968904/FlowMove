@@ -9,6 +9,7 @@
 
 UCLASS(Blueprintable, meta = (DisplayName = "FM_MoveControl"))
 //ANS 就是 Anim Notify State
+//这个通知一般是动画全长都设置了
 class GBWFLOWMOVE_API UGBWFlowMoveANS_MoveControl : public UAnimNotifyState
 {
 	GENERATED_BODY()

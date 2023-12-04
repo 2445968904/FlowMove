@@ -34,10 +34,11 @@ UGBWFlowMoveComponent::UGBWFlowMoveComponent()
 void UGBWFlowMoveComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-	
+	//FDoRepLifetimeParams Parameters;创建了一个名为Parameters的FDoRepLifetimeParams结构体对象，用于定义网络属性的复制参数。
 	FDoRepLifetimeParams Parameters;
 	Parameters.bIsPushBased = true;
 	Parameters.Condition = COND_None;
+	//（DOREPLIFETIME_WITH_PARAMS_FAST）为类中的不同属性（如TaskState、NetWorkActorGuids等）
 	DOREPLIFETIME_WITH_PARAMS_FAST(ThisClass, TaskState, Parameters)
 	DOREPLIFETIME_WITH_PARAMS_FAST(ThisClass, NetWorkActorGuids, Parameters)
 	DOREPLIFETIME_WITH_PARAMS_FAST(ThisClass, NetWorkActors, Parameters)
@@ -51,6 +52,7 @@ void UGBWFlowMoveComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
 void UGBWFlowMoveComponent::BeginPlay()
 {
 	Super::BeginPlay();
+	//GBWState是一个结构体
 	TaskState.OwnerCharacter = Cast<ACharacter>(GetOwner());
 	TaskState.Timer = 0.0f;
 	TaskState.bIsActive = false;
@@ -103,9 +105,11 @@ void UGBWFlowMoveComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	const float RealDeltaTime = DeltaTime;
-	
+
+	//避免在同一帧多次执行相同的逻辑
 	if (FrameNumber == GFrameCounter )
 		return;
+	
 
 	FlowMoveTick(RealDeltaTime);
 
@@ -127,6 +131,7 @@ bool UGBWFlowMoveComponent::GetRootMotionParamDirect(
 
 void UGBWFlowMoveComponent::OnEvent(const FFlowMoveEvent& FlowMoveEvent)
 {
+	//根据不同的事件类型执行相应的逻辑 , 有点像 Run Event
 	TaskState.AddFlowMoveEvent(FlowMoveEvent);
 	if (FlowMoveBrain)
 	{
@@ -2488,7 +2493,7 @@ void UGBWFlowMoveComponent::CheckInput(bool bReset)
 		{
 			SetMoveVector(
 				MoveVector,
-				FlowMoveBrain->MoveVectorZeroFaultToleranceDuration);
+				FlowMoveBrain->MoveVectorZeroFaultToleranceDuration);//移动矢量零容错持续时间
 		}
 		if (IsControlInput)
 		{

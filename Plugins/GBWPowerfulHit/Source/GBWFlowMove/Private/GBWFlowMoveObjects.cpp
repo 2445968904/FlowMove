@@ -1165,7 +1165,7 @@ bool FGBWFlowMoveControlParam::HasActiveAnimCurveState(FName InName) const
 	}
 	return false;
 }
-
+//这个函数是结构体FloorRoofScene的 用于判断两个结构体是否是相同的，并且会返回相应的数据
 bool FGBWFlowMoveFloorRoofScene::EqualTo(const FGBWFlowMoveFloorRoofScene& Other) const
 {
 	return Floor == Other.Floor
@@ -1341,6 +1341,7 @@ FGBWFlowMoveScene::FGBWFlowMoveScene(ACharacter* InCharacter,
 	Slope = InSlope;
 	TargetActor = InTargetActor;
 
+	//在这里创建了各种方向的检测（这里更像是settings）
 	ActorLocationScene = FGBWFlowMovePointScene(InCharacter, InCharacter->GetActorLocation(), true, LedgeTraceDistance, TraceSetting);
 	TargetLocationScene = FGBWFlowMovePointScene(InCharacter, InTargetPoint, false, LedgeTraceDistance, TraceSetting);
 	LeftLocationScene = FGBWFlowMovePointScene(InCharacter, LeftTargetPoint, false, LedgeTraceDistance, TraceSetting);
@@ -1394,7 +1395,7 @@ bool FGBWFlowMoveScene::GetPlaneConstraintSetting(FVector& PlaneNormal, FVector&
 
 	return true;
 }
-
+//这个函数为浮点的判断函数 ，具体的可以设置相同的时候怎么执行
 bool FGBWFlowMoveFloatScope::InScope(const float InValue) const
 {
 	if (Min.Type==EGBWFlowMoveValueScopePointType::Contain && !(InValue>=Min.Value))

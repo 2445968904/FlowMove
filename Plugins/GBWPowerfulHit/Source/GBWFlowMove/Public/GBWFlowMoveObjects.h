@@ -1238,7 +1238,7 @@ public:
 	void CheckCopyCache();
 	UGBWFlowMoveScript_Base* GetCopy(UObject* Outer);
 };
-
+//这里有个类叫做FlowMoveGetFocusActor
 UCLASS(Blueprintable, DefaultToInstanced, EditInlineNew, HideDropdown, meta = (DisplayName = "GBWFlowMoveGetFocusActor_Base"))
 class GBWFLOWMOVE_API UGBWFlowMoveGetFocusActor_Base : public UGBWFlowMoveObject_Base
 {
@@ -1246,7 +1246,7 @@ class GBWFLOWMOVE_API UGBWFlowMoveGetFocusActor_Base : public UGBWFlowMoveObject
 public:
 	UGBWFlowMoveGetFocusActor_Base()
 	{}
-	
+	//定义为BlueprintNativeEvent 就可以在蓝图中进行覆写 _Implementation
 	UFUNCTION(BlueprintNativeEvent, Category = "GBW|FlowMove")
 	USceneComponent* OnGetFocusActor(
 		UGBWFlowMoveComponent* FlowMoveComponent);
@@ -1264,6 +1264,7 @@ public:
 		FVector& TouchPoint);
 };
 
+//这是ActionTree 并且有一个ActionTreeeNodeType这个枚举
 UENUM(BlueprintType)
 enum EFlowMoveActionTreeNodeType
 {
@@ -1356,9 +1357,12 @@ struct FFlowMoveAnimCurveNameSetting
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Settings")
 	FName RotationOffset_Roll = FName("FM.Roll");
 };
+
+
 UCLASS(Blueprintable, DefaultToInstanced, EditInlineNew, meta = (DisplayName = "GBWFlowMoveBrain_Base"))
 class GBWFLOWMOVE_API UGBWFlowMoveBrain_Base : public UGBWFlowMoveObject_Base
 {
+	//Brain是MoveObject_Base的一个子类
 	GENERATED_BODY()
 public:
 	UGBWFlowMoveBrain_Base(){}
@@ -1370,7 +1374,7 @@ public:
 	TEnumAsByte<EFlowMoveCharacterViewMode> DefaultViewMode = EFlowMoveCharacterViewMode::TP_ForwardLockMode;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="FlowMoveSettings|Input")
-	float MoveVectorZeroFaultToleranceDuration = 0.1f;
+	float MoveVectorZeroFaultToleranceDuration = 0.1f;//移动向量零容错时长 Tolerance
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="FlowMoveSettings|Input"
 		,meta=(InlineEditConditionToggle))
 	bool bUseDefaultMoveVectorWhenZero = true;

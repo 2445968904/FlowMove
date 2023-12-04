@@ -136,7 +136,7 @@ bool UGBWFlowMoveFuncLib::IsAIPlayer(AActor* Actor)
 	
 	return bRes;
 }
-
+//执行多从扫描
 FHitResult UGBWFlowMoveFuncLib::SweepMulti(
 	const UWorld* World,
 	TArray<FHitResult>& OutHits,
@@ -426,7 +426,7 @@ bool UGBWFlowMoveFuncLib::GetTheLastValidHitResult(TArray<FHitResult> HitResultA
 	}
 	return false;
 }
-
+//这个函数用于查找玩家所处的地板和天花板的位置
 void UGBWFlowMoveFuncLib::FindFloorAndRoof(
 	ACharacter* Character,
 	FVector FromLocation,
@@ -701,7 +701,7 @@ void UGBWFlowMoveFuncLib::FindFloorAndRoof(
 		}
 	}
 }
-
+//查找阻挡的墙
 void UGBWFlowMoveFuncLib::FindBlockWall(
 	const ACharacter* Character,
 	FVector TraceVector,

@@ -457,7 +457,7 @@ public:
 	
 //BEGIN Runtime 
 	UPROPERTY(BlueprintReadOnly, Replicated, Category = "GBW|FlowMove")
-	FGBWFlowMoveState TaskState = FGBWFlowMoveState();
+	FGBWFlowMoveState TaskState = FGBWFlowMoveState();//TaskState是一个结构体
 	UPROPERTY(Replicated)
 	TArray<FGuid> NetWorkActorGuids;
 	UPROPERTY(Replicated)
@@ -472,7 +472,7 @@ public:
 	float CapsuleHalfHeightCache = 90.0f;
 	float CapsuleRadiusCache = 30.0f;
 	FVector MeshRelativeLocationCache = FVector(0,0,-92.0f);
-	float MovementCompMaxAccelerationCache = 0.0f;
+	float MovementCompMaxAccelerationCache = 0.0f;//最大加速度选取的是Movement的最大加速度（在begin play的时候调用）
 
 	UPROPERTY(BlueprintReadOnly, Replicated, Category = "GBW|FlowMove")
 	FGBWFlowMoveRMSControllerInitInfo CurrentActionTargetSceneInfo = FGBWFlowMoveRMSControllerInitInfo();
